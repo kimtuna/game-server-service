@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: gameServer
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ckacl123!
+      MYSQL_DATABASE: gameServer
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data/:/var/lib/mysql
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
